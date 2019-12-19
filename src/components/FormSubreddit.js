@@ -1,4 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { FormPage } from '../constants'
+import { switchPage } from '../actions/index'
 
 class FormSubreddit extends React.Component {
   constructor() {
@@ -13,17 +17,21 @@ class FormSubreddit extends React.Component {
       <h1>Filter a Subreddit</h1>
         <form>
           <input
-            placeHolder='buildapcsales'
+            placeholder='buildapcsales'
             value={this.state.subreddit}
             onChange={e => this.setState({subreddit: e.target.value})}>
           </input>
           <button onClick={this.handleSubmit}>OK</button>
         </form>
 
+        <button onClick={e => this.props.switchPage(FormPage.FILTERS)}>Next</button>
       </div>
-
     )
   }
 }
 
-export default FormSubreddit
+const mapStateToProps = state => { return {} }
+
+export default connect(mapStateToProps, {
+  switchPage,
+})(FormSubreddit)

@@ -12,11 +12,16 @@ class TabByKeyword extends React.Component {
     }
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    // TODO
+  }
+
   render() {
     return (
       <div>
         <h1>Enter keywords</h1>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input
             placeHolder='keyword'
             value={this.state.keyword}
@@ -34,7 +39,7 @@ class TabByKeyword extends React.Component {
           <input type='checkbox' id='match-type-flair' name='match-type' value='Flair' />
           <label htmlFor='match-type-flair'>Include matching comments</label>
 
-          <button onClick={this.handleSubmit}>OK</button>
+          <input type='submit' value='OK' />
         </form>
       </div>
     );

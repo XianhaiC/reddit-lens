@@ -11,11 +11,16 @@ class TabByUser extends React.Component {
     }
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    // TODO
+  }
+
   render() {
     return (
       <div>
         <h1>Enter username</h1>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input
             placeHolder='usrname'
             value={this.state.username}
@@ -27,7 +32,7 @@ class TabByUser extends React.Component {
           <input type='checkbox' id='include-comments' name='include-type'/>
           <label htmlFor='include-comments'>Include comments</label>
 
-          <button onClick={this.handleSubmit}>OK</button>
+          <input type='submit' value='OK' />
         </form>
       </div>
     );
