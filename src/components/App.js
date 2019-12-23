@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
 
 import FormSubreddit from './FormSubreddit'
 import FormFilters from './FormFilters'
@@ -7,8 +8,23 @@ import FormContact from './FormContact'
 import FormSMS from './FormSMS'
 import FormEmail from './FormEmail'
 import FormUsername from './FormUsername'
+import FormSubmitted from './FormSubmitted'
 
 import { FormPage } from '../constants'
+
+// TODO: understand this
+const Container = styled.div`
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  pointer-events: auto;
+  &::-webkit-scrollbar {
+    width: 0 !important;
+  }
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+`
 
 class App extends React.Component {
   render() {
@@ -38,14 +54,18 @@ class App extends React.Component {
       case FormPage.USERNAME:
         visiblePage = <FormUsername />
         break;
+
+      case FormPage.SUBMITTED:
+        visiblePage = <FormSubmitted />
+        break;
     }
 
     console.log("STATE " + this.props.page)
 
     return (
-      <div className="App">
+      <Container>
         {visiblePage}
-      </div>
+      </Container>
     )
   }
 }

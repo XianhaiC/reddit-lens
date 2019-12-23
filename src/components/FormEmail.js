@@ -1,4 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { FormPage } from '../constants'
+import { switchPage } from '../actions/index'
+import Section from '../styles/Section'
 
 class FormEmail extends React.Component {
   constructor() {
@@ -16,7 +21,7 @@ class FormEmail extends React.Component {
 
   render() {
     return (
-      <div>
+      <Section>
         <h1>Enter your email</h1>
         <form onSubmit={this.handleSubmit}>
           <input type='text'
@@ -31,11 +36,13 @@ class FormEmail extends React.Component {
             pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
             required />
 
-          <input type='submit' value='OK' />
+          <button onClick={e => this.props.switchPage(FormPage.SUBMITTED)}>Next</button>
         </form>
-      </div>
+      </Section>
     )
   }
 }
 
-export default FormEmail;
+export default connect(null, {
+  switchPage,
+})(FormEmail)

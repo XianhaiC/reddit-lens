@@ -1,19 +1,25 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import TabByKeyword from './TabByKeyword'
 import TabByUser from './TabByUser'
 
 import { FormPage } from '../constants'
 import { switchPage } from '../actions/index'
+import Section from '../styles/Section'
 
 class FormFilters extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { tabByKeyword: true }
+  }
+
   render() {
     return (
-      <div>
-        <TabByKeyword />
-        <TabByUser />
+      <Section>
+        {this.state.tabByKeyword ? <TabByKeyword /> : <TabByUser />}
         <button onClick={e => this.props.switchPage(FormPage.CONTACT)}>Next</button>
-      </div>
+      </Section>
     )
   }
 }

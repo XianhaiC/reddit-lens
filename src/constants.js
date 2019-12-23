@@ -12,4 +12,5 @@ export const FormPage = {
   EMAIL: 3,
   SMS: 4,
   USERNAME: 5,
+  SUBMITTED: 6,
 }

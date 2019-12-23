@@ -17,6 +17,19 @@ class TabByKeyword extends React.Component {
     // TODO
   }
 
+  handleAdd(e) {
+    // validate entered keyword
+    // if regex, make sure it's valid
+    // if not regex, save it
+    // make sure its not empty
+    //
+    // grab the checked boxes
+    // store the dict in an array
+    // we will render the dicts as chips below
+    // place the chips in a container to create the "grouping"
+    // effect
+  }
+
   render() {
     return (
       <div>
@@ -32,14 +45,15 @@ class TabByKeyword extends React.Component {
           <input type='checkbox' id='match-type-title' name='match-type' value='Title' />
           <label htmlFor='match-type-title'>Title</label>
           <input type='checkbox' id='match-type-body' name='match-type' value='Body' />
-          <label htmlFor='match-type-body'>Title</label>
+          <label htmlFor='match-type-body'>Body</label>
           <input type='checkbox' id='match-type-flair' name='match-type' value='Flair' />
-          <label htmlFor='match-type-flair'>Title</label>
+          <label htmlFor='match-type-flair'>Flair</label>
 
           <input type='checkbox' id='match-type-flair' name='match-type' value='Flair' />
           <label htmlFor='match-type-flair'>Include matching comments</label>
 
-          <input type='submit' value='OK' />
+          <button onClick={this.handleAdd}>Add</button>
+          <input type='submit' value='Next' />
         </form>
       </div>
     );

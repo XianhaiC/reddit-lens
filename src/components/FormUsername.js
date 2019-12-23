@@ -1,4 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { FormPage } from '../constants'
+import { switchPage } from '../actions/index'
+import Section from '../styles/Section'
 
 class FormUsername extends React.Component {
   constructor() {
@@ -15,19 +20,21 @@ class FormUsername extends React.Component {
 
   render() {
     return (
-      <div>
+      <Section>
         <h1>Enter your Reddit username</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <input type='text'
             value={this.state.username}
             onChange={e => this.setState({username: e.target.value})}
             required />
 
-          <input type='submit' value='OK' />
+          <button onClick={e => this.props.switchPage(FormPage.SUBMITTED)}>Next</button>
         </form>
-      </div>
+      </Section>
     )
   }
 }
 
-export default FormUsername;
+export default connect(null, {
+  switchPage,
+})(FormUsername)

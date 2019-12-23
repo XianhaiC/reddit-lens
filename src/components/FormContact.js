@@ -1,16 +1,23 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { FormPage } from '../constants'
+import { switchPage } from '../actions/index'
+import Section from '../styles/Section'
 
 class FormContact extends React.Component {
   render() {
     return (
-      <div>
+      <Section>
         <h1>How should we notfiy you?</h1>
-        <button>Email</button>
-        <button>SMS</button>
-        <button>Reddit PM</button>
-      </div>
+        <button onClick={e => this.props.switchPage(FormPage.EMAIL)}>Email</button>
+        <button onClick={e => this.props.switchPage(FormPage.SMS)}>SMS</button>
+        <button onClick={e => this.props.switchPage(FormPage.USERNAME)}>Reddit PM</button>
+      </Section>
     )
   }
 }
 
-export default FormContact
+export default connect(null, {
+  switchPage,
+})(FormContact)

@@ -1,9 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
+import { FormPage } from '../constants'
+import { switchPage } from '../actions/index'
 import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 // TODO validate using this
 import { isPossiblePhoneNumber } from 'react-phone-number-input'
+import Section from '../styles/Section'
 
 class FormSMS extends React.Component {
   constructor() {
@@ -20,18 +24,20 @@ class FormSMS extends React.Component {
 
   render() {
     return (
-      <div>
+      <Section>
         <h1>Enter your phone number</h1>
         <form onSubmit={this.handleSubmit}>
           <PhoneInput
             placeholder="Enter phone number"
             value={ this.state.number }
             onChange={value => this.setState({ value })} />
-          <input type='submit' value='OK' />
+          <button onClick={e => this.props.switchPage(FormPage.SUBMITTED)}>Next</button>
         </form>
-      </div>
+      </Section>
     )
   }
 }
 
-export default FormSMS;
+export default connect(null, {
+  switchPage,
+})(FormSMS)
