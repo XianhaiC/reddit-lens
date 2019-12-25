@@ -54,6 +54,8 @@ export default createGlobalStyle`
     width: 100%;
     height: 100%;
     overscroll-behavior: contain;
+    background-image: linear-gradient(to bottom right, ${props => props.theme.gradient});
+    color: rgb(102, 102, 102);
   }
   h1, h2, h3, h4, h5, h6 {
     margin: 0;

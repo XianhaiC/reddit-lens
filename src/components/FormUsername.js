@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { FormPage } from '../constants'
 import { switchPage } from '../actions/index'
-import Section from '../styles/Section'
+import { Section } from '../styles/styledComponents'
 
 class FormUsername extends React.Component {
   constructor() {

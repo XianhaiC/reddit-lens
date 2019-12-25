@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 
 import { FormPage } from '../constants'
 import { switchPage } from '../actions/index'
+import { Section } from '../styles/styledComponents'
 import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 // TODO validate using this
 import { isPossiblePhoneNumber } from 'react-phone-number-input'
-import Section from '../styles/Section'
 
 class FormSMS extends React.Component {
   constructor() {

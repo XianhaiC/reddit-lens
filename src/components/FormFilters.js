@@ -6,7 +6,7 @@ import TabByUser from './TabByUser'
 
 import { FormPage } from '../constants'
 import { switchPage } from '../actions/index'
-import Section from '../styles/Section'
+import { Section, Header, WrapperFlex } from '../styles/styledComponents'
 
 class FormFilters extends React.Component {
   constructor(props) {

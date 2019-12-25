@@ -1,5 +1,8 @@
 import React from 'react'
 
+import { Header, SubHeader, WrapperFlex } from '../styles/styledComponents'
+import Input, { CheckboxItem } from './Input'
+
 class TabByKeyword extends React.Component {
   constructor() {
     super()
@@ -10,6 +13,10 @@ class TabByKeyword extends React.Component {
       matchTypes: [],
       includeComments: false,
     }
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleAdd = this.handleAdd.bind(this)
+    this.handleCheck = this.handleCheck.bind(this)
   }
 
   handleSubmit(e) {
@@ -30,32 +37,37 @@ class TabByKeyword extends React.Component {
     // effect
   }
 
+  handleCheck(e) {
+    //TODO
+  }
+
   render() {
     return (
-      <div>
-        <h1>Enter keywords</h1>
+      <WrapperFlex direction='column' align='center'>
+        <Header>Enter keywords</Header>
         <form onSubmit={this.handleSubmit}>
-          <input
+          <Input
             placeHolder='keyword'
             value={this.state.keyword}
             onChange={e => this.setState({keyword: e.target.value})}>
-          </input>
+          </Input>
 
-          <h3>Match in</h3>
-          <input type='checkbox' id='match-type-title' name='match-type' value='Title' />
-          <label htmlFor='match-type-title'>Title</label>
-          <input type='checkbox' id='match-type-body' name='match-type' value='Body' />
-          <label htmlFor='match-type-body'>Body</label>
-          <input type='checkbox' id='match-type-flair' name='match-type' value='Flair' />
-          <label htmlFor='match-type-flair'>Flair</label>
+          <SubHeader>Match in</SubHeader>
 
-          <input type='checkbox' id='match-type-flair' name='match-type' value='Flair' />
-          <label htmlFor='match-type-flair'>Include matching comments</label>
+          <CheckboxItem id='match-type-title' name='match-type' labelText='Title'
+            checked={false} onChange={this.handleCheck}
+          />
+          <CheckboxItem id='match-type-body' name='match-type' labelText='Body'
+            checked={false} onChange={this.handleCheck}
+          />
+          <CheckboxItem id='match-type-flair' name='match-type' labelText='Flair'
+            checked={false} onChange={this.handleCheck}
+          />
 
           <button onClick={this.handleAdd}>Add</button>
           <input type='submit' value='Next' />
         </form>
-      </div>
+      </WrapperFlex>
     );
   }
 }
