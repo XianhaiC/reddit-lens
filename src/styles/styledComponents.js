@@ -12,6 +12,7 @@ export const WrapperFlex = styled.div`
   max-width: ${props => props.max_width || 'none'};
   max-height: ${props => props.max_height || 'none'};
   padding: ${props => props.padding || 'none'};
+  margin: ${props => props.margin || 'none'};
   box-sizing: border-box;
 `
 
@@ -21,7 +22,7 @@ export const Filler = styled.div`
   height: 100%;
 `
 
-export const StyledButton = styled.button`
+export const StyledArrowButton = styled.button`
   border: none;
   background-color: Transparent;
   color: white;
@@ -66,3 +67,24 @@ export const NavIndicator = (props) => {
     </WrapperFlex>
       )
 }
+
+// TODO move the self alignment elsewhere, extend this component for more specific
+// customization
+export const StyledButton = styled.button`
+  align-self: center;
+  border: 0px none;
+  border-radius: 3em;
+  background-color: white;
+  padding: 0.75em 1em;
+  font-weight: bold;
+  min-width: 10em;
+`
+
+export const StyledDivider = styled.div`
+  align-self: center;
+  height: 0.1em;
+  background: white;
+  width: calc(100% - 2.5em);
+  border-radius: 1em;
+  margin: 0.5em 0
+`

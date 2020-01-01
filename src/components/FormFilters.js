@@ -8,24 +8,32 @@ import { FormPage } from '../constants'
 import { switchPage } from '../actions/index'
 import { Section, Header, WrapperFlex } from '../styles/styledComponents'
 
+import { Nav } from './Nav'
+
 class FormFilters extends React.Component {
   constructor(props) {
     super(props)
     this.state = { tabByKeyword: true }
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    // TODO: validate filters
+    this.props.switchPage(FormPage.CONTACT)
   }
 
   render() {
     return (
       <Section>
         {this.state.tabByKeyword ? <TabByKeyword /> : <TabByUser />}
-        <button onClick={e => this.props.switchPage(FormPage.CONTACT)}>Next</button>
+        <Nav onClick={this.handleSubmit} />
       </Section>
     )
   }
 }
 
-const mapStateToProps = state => { return {} }
-
-export default connect(mapStateToProps, {
+export default connect(null, {
   switchPage,
 })(FormFilters)

@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import Checkbox from '@material-ui/core/Checkbox'
 
 import { WrapperFlex } from '../styles/styledComponents'
+import { Check } from '../styles/icons'
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -18,6 +18,7 @@ const StyledInput = styled.input`
   background-color: white;
   padding: 0.75em 0em;
   color: inherit;
+  font-weight: bold;
 `
 
 const StyledPrefix = styled.div`
@@ -26,9 +27,6 @@ const StyledPrefix = styled.div`
   font-weight: bold;
 `
 
-const StyledCheckbox = styled(Checkbox)`
-  color: white;
-`
 
   /*
 const StyledLabel = styled.label`
@@ -55,13 +53,4 @@ export const InputPrefixed = ({onChange, value, placeholder}) => {
         value={value}></StyledInput>
     </StyledWrapper>
       )
-}
-
-export const CheckboxItem = ({id, name, labelText, checked, onChange}) => {
-  return (
-    <WrapperFlex>
-      <StyledCheckbox id={id} onChange={onChange} checked={checked} />
-      <label htmlFor={id}>{labelText}</label>
-    </WrapperFlex>
-  )
 }
