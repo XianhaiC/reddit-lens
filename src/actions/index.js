@@ -4,3 +4,10 @@ export const switchPage = (page) => {
     payload: { page },
   }
 }
+
+export const addToken = (token) => {
+  return {
+    type: 'ADD_TOKEN',
+    payload: { token },
+  }
+}

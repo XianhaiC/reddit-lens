@@ -3,7 +3,9 @@ import styled from 'styled-components'
 
 export const WrapperFlex = styled.div`
   display: flex;
+  flex-flow: ${props => props.flow || 'row nowrap'};
   flex-direction: ${props => props.direction || 'row'};
+  flex-wrap: ${props => props.wrap || 'nowrap'};
   justify-content: ${props => props.justify || 'flex-start'};
   align-items: ${props => props.align || 'stretch'};
   flex: ${props => props.flex || '0 1 auto'};
@@ -37,6 +39,7 @@ export const NavDot = styled.div`
 `
 
 export const Section = styled.div`
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,6 +48,7 @@ export const Section = styled.div`
   min-height: 100%;
   max-width: 50em;
   margin: auto;
+  padding: 3em 0 0 0;
 `
 
 export const Header = styled.h1`
@@ -78,6 +82,13 @@ export const StyledButton = styled.button`
   padding: 0.75em 1em;
   font-weight: bold;
   min-width: 10em;
+`
+
+export const StyledToken = styled(StyledButton.withComponent('p'))`
+  font-size: 0.75em;
+  margin: 0 0.5em 0.3em 0;
+  min-width: 5em;
+  text-align: center;
 `
 
 export const StyledDivider = styled.div`

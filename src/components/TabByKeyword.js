@@ -1,7 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 
-import { Header, SubHeader, WrapperFlex, StyledButton, StyledDivider } from '../styles/styledComponents'
+import { addToken } from '../actions/index'
+import { Header, SubHeader, WrapperFlex, StyledButton, StyledToken,
+  StyledDivider } from '../styles/styledComponents'
 import { Check, CheckBold } from '../styles/icons'
 import Input from './Input'
 
@@ -38,7 +41,7 @@ const StyledSpan = styled.span`
 
 const CheckboxItem = ({id, name, labelText, checked, onChange}) => {
   return (
-    <WrapperFlex id={id} onClick={e => onChange(id)} 
+    <WrapperFlex id={id} onClick={e => onChange(id)}
       align='center'
       padding='0 0 0.5em 0'
       margin='0 0 0 1em'>
@@ -48,21 +51,6 @@ const CheckboxItem = ({id, name, labelText, checked, onChange}) => {
     </WrapperFlex>
   )
 }
-  /*
-const CheckboxItem = ({id, name, labelText, checked, onChange}) => {
-  return (
-    <WrapperFlex id={id} onClick={e => onChange(id)} 
-      align='center'
-      adding='0 0 0.5em 0'>
-      <input type='checkbox' id={id} style='display: none;'/>
-      <label for={id}>
-        <span><svg><CheckBold /></svg></span>
-        <span>{labelText}</span>
-      </label>
-    </WrapperFlex>
-  )
-}
-*/
 
 class TabByKeyword extends React.Component {
   constructor() {
@@ -70,7 +58,7 @@ class TabByKeyword extends React.Component {
 
     this.state = {
       keyword: '',
-      isRegex: false,
+      useRegex: false,
       matchTitle: false,
       matchBody: false,
       matchFlair: false,
@@ -98,6 +86,13 @@ class TabByKeyword extends React.Component {
     // we will render the dicts as chips below
     // place the chips in a container to create the "grouping"
     // effect
+
+    const input = this.state.keyword.trim()
+    if (input == '' || input.length > 30) return
+
+    const newToken = { ...this.state }
+    this.props.addToken(newToken)
+    this.setState({ keyword: '' })
   }
 
   handleCheck(id) {
@@ -114,6 +109,12 @@ class TabByKeyword extends React.Component {
       case "match-type-flair":
         this.setState({ matchFlair: !this.state.matchFlair })
         break
+      case "use-regex":
+        this.setState({ useRegex: !this.state.useRegex })
+        break
+      case "include-comments":
+        this.setState({ includeComments: !this.state.includeComments })
+        break
       default:
         break
     }
@@ -126,11 +127,16 @@ class TabByKeyword extends React.Component {
         <WrapperFlex direction='column' align-items='flex-start' flex='1 1 0'
           width='100%' max_width='30em'
         >
-          <Input
-            placeHolder='keyword'
-            value={this.state.keyword}
-            onChange={e => this.setState({keyword: e.target.value})}>
-          </Input>
+          <WrapperFlex align-items='flex-end'>
+            <Input
+              placeHolder='keyword'
+              value={this.state.keyword}
+              onChange={e => this.setState({keyword: e.target.value})}
+            />
+            <CheckboxItem id='use-regex' labelText='Use regex'
+              checked={this.state.useRegex} onChange={this.handleCheck}
+            />
+          </WrapperFlex>
 
           <SubHeader>Match in</SubHeader>
 
@@ -154,10 +160,28 @@ class TabByKeyword extends React.Component {
             Add
           </StyledButton>
 
+          <WrapperFlex wrap='wrap' justify='center' max_width='30em'
+            margin='3em 0 0 0'
+          >
+            {
+              this.props.keywordTokens.map(token => {
+                return <StyledToken>{token.keyword}</StyledToken>
+              })
+            }
+          </WrapperFlex>
+
         </WrapperFlex>
       </WrapperFlex>
     );
   }
 }
 
-export default TabByKeyword
+const mapStateToProps = (state) => {
+  return {
+    keywordTokens: state.form.keywordTokens,
+  }
+}
+
+export default connect(mapStateToProps, {
+  addToken,
+})(TabByKeyword)

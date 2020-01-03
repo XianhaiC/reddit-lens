@@ -39,7 +39,6 @@ class FormSubreddit extends React.Component {
     return (
       <Section>
         <WrapperFlex direction='column' align='center' flex='1 1 0'
-          margin='3em 0 0 0'
         >
           <Header>Filter a Subreddit</Header>
           <form onSubmit={this.handleSubmit}>
