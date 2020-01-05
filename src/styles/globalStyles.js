@@ -48,9 +48,9 @@ export default createGlobalStyle`
     -ms-user-select: none;
     user-select: none;
   }
-  html {
-    font-size: 1.25em;
-  }
+  // html {
+    // font-size: 1.25em;
+  // }
   html, body {
     padding: 0;
     margin: 0;

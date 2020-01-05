@@ -10,20 +10,21 @@ const StyledWrapper = styled.div`
   border: 0px none;
   border-radius: 3em;
   background-color: white;
-  padding: 0em 1em;
+  padding: 0em 1.3em;
+  margin: 0 0 0.5em 0;
 `
 
 const StyledInput = styled.input`
+  box-sizing: border-box;
   border: 0px none;
   background-color: white;
-  padding: 0.75em 0em;
+  height: 2.5em;
   color: inherit;
   font-weight: bold;
 `
 
 const StyledPrefix = styled.div`
   margin-right: 0.5em;
-  font-size: 0.75em;
   font-weight: bold;
 `
 

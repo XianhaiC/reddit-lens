@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 
 import { FormPage } from '../constants'
 import { switchPage } from '../actions/index'
-import { Section } from '../styles/styledComponents'
+import { Section, Header, FlexForm } from '../styles/styledComponents'
+import { Nav } from './Nav'
 import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 // TODO validate using this
@@ -25,14 +26,15 @@ class FormSMS extends React.Component {
   render() {
     return (
       <Section>
-        <h1>Enter your phone number</h1>
-        <form onSubmit={this.handleSubmit}>
+        <Header>Enter your phone number</Header>
+        <FlexForm onSubmit={this.handleSubmit}>
           <PhoneInput
             placeholder="Enter phone number"
             value={ this.state.number }
-            onChange={value => this.setState({ value })} />
-          <button onClick={e => this.props.switchPage(FormPage.SUBMITTED)}>Next</button>
-        </form>
+            onChange={value => this.setState({ value })}
+          />
+        </FlexForm>
+        <Nav prevPage={FormPage.CONTACT} nextPage={FormPage.SUBMITTED} />
       </Section>
     )
   }

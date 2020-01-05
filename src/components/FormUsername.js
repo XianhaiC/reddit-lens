@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 
 import { FormPage } from '../constants'
 import { switchPage } from '../actions/index'
-import { Section } from '../styles/styledComponents'
+import { Section, Header, WrapperFlex, FlexForm } from '../styles/styledComponents'
+import { Nav } from './Nav'
+import Input from './Input'
 
 class FormUsername extends React.Component {
   constructor() {
@@ -21,15 +23,19 @@ class FormUsername extends React.Component {
   render() {
     return (
       <Section>
-        <h1>Enter your Reddit username</h1>
-        <form>
-          <input type='text'
-            value={this.state.username}
-            onChange={e => this.setState({username: e.target.value})}
-            required />
+        <Header>Enter your Reddit username</Header>
 
-          <button onClick={e => this.props.switchPage(FormPage.SUBMITTED)}>Next</button>
-        </form>
+        <FlexForm onSubmit={this.handleSubmit}>
+          <Input
+            placeholder='Username'
+            value={this.state.keyword}
+            onChange={e => this.setState({email: e.target.value})}
+            maxLength='50'
+            required
+          />
+        </FlexForm>
+
+        <Nav prevPage={FormPage.CONTACT} nextPage={FormPage.SUBMITTED} />
       </Section>
     )
   }

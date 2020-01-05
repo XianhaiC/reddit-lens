@@ -28,7 +28,7 @@ class FormFilters extends React.Component {
     return (
       <Section>
         {this.state.tabByKeyword ? <TabByKeyword /> : <TabByUser />}
-        <Nav onClick={this.handleSubmit} />
+        <Nav prevPage={FormPage.SUBREDDIT} nextPage={FormPage.CONTACT} />
       </Section>
     )
   }

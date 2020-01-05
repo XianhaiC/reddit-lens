@@ -1,9 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
 
 import { FormPage } from '../constants'
 import { switchPage } from '../actions/index'
-import { Section } from '../styles/styledComponents'
+import { Section, Header, WrapperFlex, FlexForm } from '../styles/styledComponents'
+import { Nav } from './Nav'
+import Input from './Input'
+
 
 class FormEmail extends React.Component {
   constructor() {
@@ -22,22 +26,28 @@ class FormEmail extends React.Component {
   render() {
     return (
       <Section>
-        <h1>Enter your email</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input type='text'
-            value={this.state.email}
-            onChange={e => this.setState({emailConfirm: e.target.value})}
-            pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
-            required />
+        <Header>Enter your email</Header>
 
-          <input type='text'
-            value={this.state.emailConfirm}
+        <FlexForm onSubmit={this.handleSubmit}>
+          <Input
+            placeholder='Email'
+            value={this.state.keyword}
             onChange={e => this.setState({email: e.target.value})}
             pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
-            required />
+            maxLength='50'
+            required
+          />
+          <Input
+            placeholder='Confirm Email'
+            value={this.state.keyword}
+            onChange={e => this.setState({emailConfirm: e.target.value})}
+            pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
+            maxLength='50'
+            required
+          />
+        </FlexForm>
 
-          <button onClick={e => this.props.switchPage(FormPage.SUBMITTED)}>Next</button>
-        </form>
+        <Nav prevPage={FormPage.CONTACT} nextPage={FormPage.SUBMITTED} />
       </Section>
     )
   }

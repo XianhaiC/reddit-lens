@@ -75,20 +75,28 @@ export const NavIndicator = (props) => {
 // TODO move the self alignment elsewhere, extend this component for more specific
 // customization
 export const StyledButton = styled.button`
+  box-sizing: border-box;
   align-self: center;
   border: 0px none;
   border-radius: 3em;
   background-color: white;
-  padding: 0.75em 1em;
+  height: 2.5em;
+  padding: 0em 1em;
+  margin: 0em 0em 0.5em 0em;
   font-weight: bold;
   min-width: 10em;
+
+  ::-moz-focus-inner {
+    border: 0;
+  }
 `
 
-export const StyledToken = styled(StyledButton.withComponent('p'))`
-  font-size: 0.75em;
-  margin: 0 0.5em 0.3em 0;
-  min-width: 5em;
+export const StyledToken = styled(StyledButton)`
+  pointer-events: none;
   text-align: center;
+  min-width: 5em;
+  vertical-align: middle;
+  margin: 0em 0.5em 0.5em 0em;
 `
 
 export const StyledDivider = styled.div`
@@ -98,4 +106,11 @@ export const StyledDivider = styled.div`
   width: calc(100% - 2.5em);
   border-radius: 1em;
   margin: 0.5em 0
+`
+
+export const FlexForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
 `

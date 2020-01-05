@@ -48,7 +48,7 @@ class FormSubreddit extends React.Component {
               placeholder='buildapcsales'></InputPrefixed>
           </form>
         </WrapperFlex>
-        <Nav onClick={this.handleSubmit} />
+        <Nav prevPage={FormPage.SUBREDDIT} nextPage={FormPage.FILTERS} />
       </Section>
         )
   }
